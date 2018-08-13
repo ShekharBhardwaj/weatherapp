@@ -3,7 +3,7 @@ var geocode = require('./address/geocode');
 var weather = require('./weather/weather');
 var app = express();
 
-app.get('/weather/', function (req, res) {
+app.get('/weather', function (req, res) {
     console.log(req.query);
     geocode.getGeocode(req.query.address,(error, result) => {
         if(error){
