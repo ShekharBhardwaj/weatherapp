@@ -13,7 +13,7 @@ app.get('/weather', function (req, res) {
         res.send(payload);
     })
     .catch((error) => {
-        send(error);
+        res.send(error);
     });
   
 });
