@@ -1,4 +1,5 @@
 const request = require('request');
+var LOGGER  = require('./../logger').logger;
 
 const url = 'http://maps.googleapis.com/maps/api/geocode/json';
 

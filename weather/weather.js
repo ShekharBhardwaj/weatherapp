@@ -1,4 +1,5 @@
 const request = require('request');
+var LOGGER  = require('./../logger').logger;
 
 const url = 'https://api.darksky.net/forecast';
 const api_key = '64991c13572fe39c33ad0225f9e09efc';
@@ -6,6 +7,7 @@ const api_key = '64991c13572fe39c33ad0225f9e09efc';
 
 
 var getWeatherPromise = (location) => {
+    LOGGER.debug(`Geolocation input: ${JSON.stringify(location)}`);
     return new Promise((resolve, reject) => {
         request({
             url: `${url}/${api_key}/${location.lat},${location.lng}`,
