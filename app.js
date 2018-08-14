@@ -1,18 +1,19 @@
 var express = require('express');
 var geocode = require('./address/geocode');
 var weather = require('./weather/weather');
+var LOGGER  = require('./logger').logger;
+
 var app = express();
-
-
-
 app.get('/weather', function (req, res) {
-    
+    LOGGER.info(`quried address: ${req.query.address}`);
     geocode.getGeocodePromise(req.query && req.query.address)
     .then(weather.getWeatherPromise)
     .then((payload) => {
+        LOGGER.debug(`Response: ${JSON.stringify(payload)}`);
         res.send(payload);
     })
     .catch((error) => {
+        LOGGER.error(`Err: ${JSON.stringify(error )}`);
         res.send(error);
     });
   
